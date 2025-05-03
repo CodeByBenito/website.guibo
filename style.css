@@ -28,7 +28,7 @@ body {
   margin: 0; /* Remover margens padrão */
 }
 
-home-content .p {
+.home-content p {
   color: #cccccc;
   line-height: 1.6;
 }
@@ -73,34 +73,35 @@ span{
   color: transparent;
 }
 
-.navbar a{
-  font-size: 1.8rem;
+.navbar a {
+  font-size: 1.6rem;
   color: var(--text-color);
-  margin-left: 4rem;
+  margin-left: 3rem;
   font-weight: 500;
-  transition: 0.3s ease-in-out;
-  border-bottom: 3px solid transparent;
-}
-.navbar a:hover{
-  color: linear-gradient(135deg, #ff6a00, #ee0979);
-  border-bottom: 3px solid var(--main-color);
+  padding-bottom: 5px;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.gradient-btn{
-  font-size: 1.8rem;
-  padding: 1rem 2rem;
-  border-radius: 3rem;  
-  background: linear-gradient(135deg, #ff6a00, #ee0979);
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  color: white;
-  border: none;
-  text-wrap: nowrap;
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--main-color);
+  transition: width 0.3s ease;
 }
-.gradient-btn:hover{
-  transform: scale(1.05);
+
+.navbar a:hover {
+  color: var(--main-color);
 }
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
 
 section{
   min-height: 100vh;
@@ -289,13 +290,6 @@ box-shadow: 0 0 25px var(--main-color),
   color: #fff;
 }
 
-.services h2 {
-  color: #ff5722;
-  font-size: 2.8rem;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
 .services-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -400,6 +394,32 @@ box-shadow: 0 0 25px var(--main-color),
 .service-content .btn{
   margin: 3rem 0;
 }
+.contact{
+  background-color: var(--bg-color);
+}
+.contact h2{
+  margin-bottom: 3rem;
+  color: var(--text-color);
+}
+.contact form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin: 5rem 0;
+  text-align: center;
+}
+.contact form .input-box input, .contact form textarea{
+  width: 100%;
+  padding: 2.5rem;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border-radius: 2rem;
+  border: 2px solid var(--main-color);
+  margin: 1.5rem 0;
+  resize: none;
+}
 
 .footer{
   background-color: var(--second-bg-color);
@@ -430,11 +450,12 @@ box-shadow: 0 0 25px var(--main-color),
   font-size: 16px;
 }
 
-@media(max-width:1285px){
-  #menu-icon{
+@media (max-width: 768px) {
+  #menu-icon {
     display: block;
   }
-  .navbar{
+
+  .navbar {
     position: absolute;
     top: 100%;
     right: 0;
@@ -446,42 +467,85 @@ box-shadow: 0 0 25px var(--main-color),
     border-bottom: 2px solid var(--main-color);
     display: none;
   }
-  .navbar a{
+
+  .navbar a {
     display: block;
     font-size: 2rem;
     margin: 3rem 0;
     color: var(--text-color);
   }
-  .navbar.active{
+
+  .navbar.active {
     display: block;
   }
-  .gradient-btn{
+
+  .gradient-btn {
     display: none;
   }
-  .home{
+
+  .home {
     flex-direction: column-reverse;
     margin: 5rem 0;
     gap: 5rem;
-  }
-  .home-content{
     align-items: center;
     text-align: center;
   }
-  .home-img img{
+
+  .home-content {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .home-img img {
     width: 56vw;
   }
-  .about{
-    flex-direction: column-reverse;
-    text-align: center;
+
+  .about {
+    flex-direction: column;
+    margin: 5rem 0;
+    gap: 5rem;
   }
-  .about h2{
+
+  .about h2 {
     text-align: center;
     margin: 2rem 0;
   }
-  .about img{
-    width: 52vw;
+
+  .about img {
+    width: 56vw;
   }
-  .contact form{
+
+  .about-content {
+    align-items: center;
+    text-align: center;
+    display: flex;
     flex-direction: column;
+  }
+
+  .contact form {
+    flex-direction: column;
+  }
+
+  .about-service {
+    flex-direction: column;
+    margin: 5rem 0;
+    gap: 5rem;
+  }
+  .about-content h2{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-img {
+    display: flex;
+    justify-content: center;
   }
 }
